@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Meg ❤️</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to right, #ffe6e9, #ffc0cb);
@@ -14,6 +16,10 @@
         }
         h1 {
             font-size: 3em;
+        }
+        p {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8em;
         }
         .container {
             margin-top: 40px;
@@ -36,7 +42,8 @@
         .hidden-message {
             display: none;
             margin-top: 50px;
-            font-size: 1.5em;
+            font-size: 1.8em;
+            font-family: 'Pacifico', cursive;
         }
         .input-container {
             margin-top: 30px;
@@ -67,16 +74,23 @@
             justify-content: center;
             gap: 20px;
         }
+        .image-container div {
+            position: relative;
+            cursor: not-allowed;
+        }
         .image-container img {
             width: 300px;
             border-radius: 15px;
-            cursor: not-allowed;
         }
         .word {
-            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-size: 2em;
             font-weight: bold;
             color: #ff4757;
+            display: none;
         }
     </style>
 </head>
@@ -116,8 +130,7 @@
             const input2 = document.getElementById('answerInput2').value.trim().toLowerCase();
             if (input1 === 'bloom' && input2 === 'happybirthday') {
                 document.getElementById('hiddenMessage').style.display = 'block';
-                let images = document.querySelectorAll('.image-container img');
-                images.forEach(img => img.style.cursor = 'pointer');
+                document.querySelectorAll('.image-container div').forEach(div => div.style.cursor = 'pointer');
                 unlocked = true;
             } else {
                 alert('Not quite! Keep trying.');
