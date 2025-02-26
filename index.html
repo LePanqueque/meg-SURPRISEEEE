@@ -124,10 +124,11 @@
     <script>
         let unlocked = false;
         let wordCount = 0;
-        
+
         function checkAnswer() {
             const input1 = document.getElementById('answerInput1').value.trim().toLowerCase();
             const input2 = document.getElementById('answerInput2').value.trim().toLowerCase();
+            
             if (input1 === 'bloom' && input2 === 'happybirthday') {
                 document.getElementById('hiddenMessage').style.display = 'block';
                 document.querySelectorAll('.image-container div').forEach(div => div.style.cursor = 'pointer');
@@ -139,11 +140,14 @@
 
         function revealWord(index) {
             if (!unlocked) return;
+
             let words = [document.getElementById('word1'), document.getElementById('word2'), document.getElementById('word3')];
-            if (words[index].style.display === 'none') {
+
+            if (words[index].style.display !== 'block') { 
                 words[index].style.display = 'block';
                 wordCount++;
             }
+
             if (wordCount === 3) {
                 document.getElementById('flowerMessage').style.display = 'block';
                 document.getElementById('flower').style.display = 'block';
