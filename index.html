@@ -62,7 +62,6 @@
             background: #ff4757;
         }
         .image-container {
-            display: none;
             margin-top: 30px;
             display: flex;
             justify-content: center;
@@ -71,6 +70,13 @@
         .image-container img {
             width: 300px;
             border-radius: 15px;
+            cursor: not-allowed;
+        }
+        .word {
+            display: none;
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff4757;
         }
     </style>
 </head>
@@ -90,26 +96,49 @@
         <button onclick="checkAnswer()">Submit</button>
     </div>
 
-    <div id="hiddenMessage" class="hidden-message">
-        Hmm... I wonder what's hidden in the flowers? 🌸
-    </div>
-
+    <div id="hiddenMessage" class="hidden-message">Click on the images</div>
     <div id="imageContainer" class="image-container">
-        <img id="customImage1" src="https://github.com/LePanqueque/meg-SURPRISEEEE/blob/main/Megcutie.jpg.jpg?raw=true" alt="A special surprise">
-        <img id="customImage2" src="https://github.com/LePanqueque/meg-SURPRISEEEE/blob/main/IMG_1322.jpg?raw=true" alt="Another surprise">
-        <img id="customImage3" src="https://github.com/LePanqueque/meg-SURPRISEEEE/blob/main/IMG_2120.jpg?raw=true" alt="Yet another surprise">
+        <div onclick="revealWord(0)"><img id="customImage1" src="https://github.com/LePanqueque/meg-SURPRISEEEE/blob/main/Megcutie.jpg.jpg?raw=true" alt="A special surprise"><p id="word1" class="word">I</p></div>
+        <div onclick="revealWord(1)"><img id="customImage2" src="https://github.com/LePanqueque/meg-SURPRISEEEE/blob/main/IMG_1322.jpg?raw=true" alt="Another surprise"><p id="word2" class="word">LOVE</p></div>
+        <div onclick="revealWord(2)"><img id="customImage3" src="https://github.com/LePanqueque/meg-SURPRISEEEE/blob/main/IMG_2120.jpg?raw=true" alt="Yet another surprise"><p id="word3" class="word">YOU</p></div>
     </div>
+    
+    <div id="flowerMessage" class="hidden-message" style="display: none;">I wonder what's in the flower? (click the flower)</div>
+    <div id="flower" class="hidden-message" style="display: none; cursor: pointer;" onclick="showFinalMessage()">🌸</div>
+    <div id="finalMessage" class="hidden-message" style="display: none;">LOOK BEHIND U HAHA</div>
 
     <script>
+        let unlocked = false;
+        let wordCount = 0;
+        
         function checkAnswer() {
             const input1 = document.getElementById('answerInput1').value.trim().toLowerCase();
             const input2 = document.getElementById('answerInput2').value.trim().toLowerCase();
             if (input1 === 'bloom' && input2 === 'happybirthday') {
                 document.getElementById('hiddenMessage').style.display = 'block';
-                document.getElementById('imageContainer').style.display = 'flex';
+                let images = document.querySelectorAll('.image-container img');
+                images.forEach(img => img.style.cursor = 'pointer');
+                unlocked = true;
             } else {
                 alert('Not quite! Keep trying.');
             }
+        }
+
+        function revealWord(index) {
+            if (!unlocked) return;
+            let words = [document.getElementById('word1'), document.getElementById('word2'), document.getElementById('word3')];
+            if (words[index].style.display === 'none') {
+                words[index].style.display = 'block';
+                wordCount++;
+            }
+            if (wordCount === 3) {
+                document.getElementById('flowerMessage').style.display = 'block';
+                document.getElementById('flower').style.display = 'block';
+            }
+        }
+
+        function showFinalMessage() {
+            document.getElementById('finalMessage').style.display = 'block';
         }
     </script>
 </body>
