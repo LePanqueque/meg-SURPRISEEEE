@@ -61,20 +61,26 @@
         button:hover {
             background: #ff4757;
         }
+        img {
+            margin-top: 30px;
+            width: 300px;
+            border-radius: 15px;
+        }
     </style>
 </head>
 <body>
-    <h1>Hey Meg, This is Just for You ❤️</h1>
-    <p>Each link below takes you on a special journey—are you ready?</p>
+    <h1>HI BABY THIS IS FOR YOU ❤️</h1>
+    <p>CLICK EM</p>
 
     <div class="container">
         <a href="https://mywordle.me/?word=bloom" class="link-button">Custom Wordle</a>
-        <a href="YOUR_STRANDS_LINK" class="link-button">Custom Strands</a>
+        <a href="https://customstrandsnyt.com/play/-YourSpecialDay/" class="link-button">Custom Strands</a>
     </div>
 
     <div class="input-container">
-        <p>Enter the magic word to reveal a secret:</p>
-        <input type="text" id="answerInput" placeholder="Type here...">
+        <p>Enter the magic words to reveal a secret:</p>
+        <input type="text" id="answerInput1" placeholder="First word...">
+        <input type="text" id="answerInput2" placeholder="Second word...">
         <button onclick="checkAnswer()">Submit</button>
     </div>
 
@@ -82,11 +88,15 @@
         Hmm... I wonder what's hidden in the flowers? 🌸
     </div>
 
+    <img id="customImage" src="https://github.com/LePanqueque/meg-SURPRISEEEE/blob/main/Megcutie.jpg.jpg?raw=true" alt="A special surprise" style="display: none;">
+
     <script>
         function checkAnswer() {
-            const input = document.getElementById('answerInput').value.trim().toLowerCase();
-            if (input === 'bloom') {
+            const input1 = document.getElementById('answerInput1').value.trim().toLowerCase();
+            const input2 = document.getElementById('answerInput2').value.trim().toLowerCase();
+            if (input1 === 'bloom' && input2 === 'happybirthday') {
                 document.getElementById('hiddenMessage').style.display = 'block';
+                document.getElementById('customImage').style.display = 'block';
             } else {
                 alert('Not quite! Keep trying.');
             }
