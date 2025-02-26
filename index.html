@@ -61,8 +61,14 @@
         button:hover {
             background: #ff4757;
         }
-        img {
+        .image-container {
+            display: none;
             margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .image-container img {
             width: 300px;
             border-radius: 15px;
         }
@@ -88,7 +94,11 @@
         Hmm... I wonder what's hidden in the flowers? 🌸
     </div>
 
-    <img id="customImage" src="https://github.com/LePanqueque/meg-SURPRISEEEE/blob/main/Megcutie.jpg.jpg?raw=true" alt="A special surprise" style="display: none;">
+    <div id="imageContainer" class="image-container">
+        <img id="customImage1" src="https://github.com/LePanqueque/meg-SURPRISEEEE/blob/main/Megcutie.jpg.jpg?raw=true" alt="A special surprise">
+        <img id="customImage2" src="PLACEHOLDER_FOR_SECOND_IMAGE" alt="Another surprise">
+        <img id="customImage3" src="PLACEHOLDER_FOR_THIRD_IMAGE" alt="Yet another surprise">
+    </div>
 
     <script>
         function checkAnswer() {
@@ -96,9 +106,9 @@
             const input2 = document.getElementById('answerInput2').value.trim().toLowerCase();
             if (input1 === 'bloom' && input2 === 'happybirthday') {
                 document.getElementById('hiddenMessage').style.display = 'block';
-                document.getElementById('customImage').style.display = 'block';
+                document.getElementById('imageContainer').style.display = 'flex';
             } else {
-                alert('NOPE TRY AGAIN HAHHEAHHEAH');
+                alert('Not quite! Keep trying.');
             }
         }
     </script>
